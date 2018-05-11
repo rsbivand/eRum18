@@ -1,21 +1,7 @@
-## ----setup, include=FALSE------------------------------------------------
-knitr::opts_chunk$set(echo = FALSE)
-
-## ----size, echo=FALSE, results='hide'------------------------------------
-knitr::knit_hooks$set(mysize = function(before, options, envir) {
-  if (before) 
-    return(options$size)
-})
-knitr::opts_chunk$set(prompt=TRUE)
-suppressMessages(library(extrafont))
-suppressMessages(loadfonts())
-
-## ----set-options, echo=FALSE, results='hide'-----------------------------
-options(width = 100)
-
 ## ---- echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE, results="hide"----
+system("svn log --xml --verbose -r 6:74688 https://svn.r-project.org/R/trunk > trunk_verbose_log1.xml")
 library(XML)
-tr <- try(xmlTreeParse("../code/trunk_verbose_log1.xml"))
+tr <- try(xmlTreeParse("trunk_verbose_log1.xml"))
 tr1 <- xmlChildren(xmlRoot(tr))
 revs <- sapply(tr1, function(x) unname(xmlAttrs(x)))
 msgs <- sapply(tr1, function(x) xmlValue(xmlChildren(x)[["msg"]]))
@@ -35,7 +21,7 @@ ad_tab <- table(authors, years)
 rs <- rowSums(ad_tab)
 
 ## ---- fig1, fig.show='hide', fig.height=6, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent")----
-pal <- scan("../colormap_hex.txt", "character", quiet=TRUE)
+pal <- scan("colormap_hex.txt", "character", quiet=TRUE)
 set.seed(1)
 pal_s <- sample(sample(pal))
 plot(1998:2017, colSums(ad_tab)[2:21], type="b", xlab="", ylab="SVN commits", ylim=c(0, 4000))
