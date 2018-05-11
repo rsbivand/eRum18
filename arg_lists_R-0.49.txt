@@ -1,0 +1,934 @@
+%o%
+function (x, y, FUN = "*", ...) 
+Gamma
+function (link = "inverse") 
+I
+function (x) 
+IQR
+function (x) 
+NCOL
+function (x) 
+NROW
+function (x) 
+NextMethod
+function (generic = NULL, object = NULL, ...) 
+Recall
+function (...) 
+[.expression
+function (x, subs) 
+[.ts
+function (x, i, j) 
+[[.expression
+function (x, subs) 
+abbreviate
+function (names.arg, minlength = 4, use.classes = T, dot = F) 
+abline
+function (a = NULL, b = NULL, h = NULL, v = NULL, reg = NULL,         coef = NULL, col = par("col"), lty = par("lty"), ...) 
+anova
+function (x, ...) 
+anova.glm
+function (object, ..., test = NULL, na.action = na.omit) 
+anova.glmlist
+function (object, ..., test = NULL) 
+anova.lm
+function (object, ...) 
+anovalist.lm
+function (object, ..., test = NULL) 
+aperm
+function (a, perm, resize = TRUE) 
+append
+function (x, values, after = length(x)) 
+apply
+function (X, MARGIN, FUN, ...) 
+approx
+function (x, y, xout, method = "lines", n = 50, rule = 1) 
+approxfun
+function (x, y, method = "lines", rule = 1) 
+array
+function (data = NA, dim = length(data), dimnames = NULL) 
+arrows
+function (x0, y0, x1, y1, length = 0.25, angle = 30, code = 2,         col = par("fg"), lty = NULL, xpd = FALSE) 
+as.array
+function (x) 
+as.character
+function (x) 
+as.complex
+function (x) 
+as.double
+function (x) 
+as.expression
+function (x) 
+as.factor
+function (x, ordered = FALSE) 
+as.formula
+function (object) 
+as.function
+function (x) 
+as.integer
+function (x) 
+as.list
+function (x) 
+as.logical
+function (x) 
+as.matrix
+function (x) 
+as.matrix.data.frame
+function (x) 
+as.matrix.default
+function (x) 
+as.name
+function (x) 
+as.null
+function (x) 
+as.numeric
+function (x) 
+as.qr
+function (x) 
+as.real
+function (x) 
+as.single
+function (x) 
+as.ts
+function (x) 
+as.vector
+function (x, mode = "any") 
+assign
+function (x, value, envir = sys.frame(sys.parent()), inherits = FALSE,         immediate = TRUE) 
+attach
+function (x, pos = 2) 
+ave
+function (x, ...) 
+axis
+function (which, at, labels = TRUE, ...) 
+backsolve
+function (r, x, k = ncol(r)) 
+barplot
+function (height, names.arg, col = NULL, border = par("fg"),         beside = FALSE, space = 0.2, legend.text, main = NULL,         xlab = NULL, ylab = NULL, xlim, ylim, ...) 
+binomial
+function (link = "logit") 
+body
+function (fun = sys.function(sys.parent())) 
+box
+function (lty = "solid", ...) 
+boxplot
+function (x, ..., range = 1.5, width = NULL, varwidth = FALSE,         notch = FALSE, names, data = sys.frame(sys.parent()),         plot = TRUE, border = par("fg"), col = NULL, log = "",         pars = NULL) 
+boxplot.stats
+function (x, coef) 
+builtins
+function (internal = FALSE) 
+bw.bcv
+function (x, samples = 100) 
+bw.sj
+function (x, samples = 100) 
+bw.ucv
+function (x, samples = 100) 
+bxp
+function (z, notch = FALSE, width = NULL, varwidth = FALSE, border = par("fg"),         col = NULL, log = "", pars = NULL, ...) 
+cat
+function (..., file = "", sep = " ", fill = FALSE, labels = NULL,         append = FALSE) 
+cbind
+function (...) 
+char.expand
+function (input, target, nomatch = stop("no match")) 
+character
+function (n = 0) 
+charmatch
+function (x, table, nomatch = NA) 
+chisquare.test
+function (x, y = NULL, correct = TRUE, p = rep(1/length(x), length(x))) 
+chol
+function (x) 
+chol2inv
+function (x, size = ncol(x)) 
+cm
+function (x) 
+co.intervals
+function (x, number = 6, overlap = 0.5) 
+coef
+function (x, ...) 
+coefficients
+function (x, ...) 
+coefficients.glm
+function (object) 
+coefficients.lm
+function (z) 
+col
+function (x, as.factor = FALSE) 
+colnames
+function (x) 
+colnames<-
+function (x, value) 
+complete.cases
+function (...) 
+complex
+function (n = 0, real = numeric(), imag = numeric()) 
+contour
+function (x = seq(0, 1, len = nrow(z)), y = seq(0, 1, len = ncol(z)),         z, nlevels = 10, levels = pretty(range(z, na.rm = TRUE),                 nlevels), labcex = 0, col = par("fg"), lty = par("lty"),         add = FALSE) 
+contr.helmert
+function (n, contrasts = TRUE) 
+contr.poly
+function (n, contrasts = TRUE) 
+contr.sum
+function (n, contrasts = TRUE) 
+contr.treatment
+function (n, contrasts = TRUE) 
+contrasts
+function (x, contrasts = TRUE) 
+contrasts<-
+function (x, ctr) 
+convolve
+function (x, y, conj = T) 
+coplot
+function (formula, data, given.values, panel = points, rows,         columns, show.given = TRUE, col = par("fg"), pch = par("pch"),         ...) 
+cor
+function (x, y = NULL, use = "all.obs") 
+count.fields
+function (file, sep = "", skip = 0) 
+cov
+function (x, y = NULL, use = "all.obs") 
+covratio
+function (z) 
+crossprod
+function (x, y = x) 
+curve
+function (expr, from, to, n = 100, add = FALSE, type = "l", ...) 
+cut
+function (x, breaks, labels) 
+data
+function (..., list = character(0)) 
+data.entry
+function (..., Modes = NULL, Names = NULL) 
+data.frame
+function (..., row.names = NULL, col.names = NULL, as.is = FALSE) 
+data.matrix
+function (frame) 
+dcauchy
+function (x, location = 0, scale = 1) 
+de
+function (..., Modes = NULL, Names = NULL) 
+de.ncols
+function (inlist) 
+de.restore
+function (inlist, ncols, coltypes, argnames, args) 
+de.setup
+function (ilist, list.names, incols) 
+delete.response
+function (termobj) 
+density
+function (x, bw, adjust = 1, kernel = "gaussian", n = 512, width,         from, to, cut = 3, plot.graph = FALSE) 
+deriv
+function (x, ...) 
+deriv.default
+function (expr, namevec, function.arg = NULL, tag = ".expr") 
+deriv.formula
+function (expr, namevec, function.arg = NULL, tag = ".expr") 
+detach
+function (name, pos = 2) 
+deviance
+function (x, ...) 
+deviance.glm
+function (object) 
+deviance.lm
+function (z) 
+dexp
+function (x, rate = 1) 
+df.residual
+function (x, ...) 
+df.residual.lm
+function (z) 
+dfbetas
+function (z) 
+dffits
+function (z) 
+dgamma
+function (x, shape, scale = 1) 
+diag
+function (x = 1, nrow, ncol = n) 
+diag<-
+function (x, value) 
+diff
+function (x, lag = 1, differences = 1) 
+dlnorm
+function (x, meanlog = 0, sdlog = 1) 
+dlogis
+function (x, location = 0, scale = 1) 
+dnorm
+function (x, mean = 0, sd = 1) 
+dotplot
+function (x, labels = NULL, groups = NULL, gdata = NULL, cex = par("cex"),         pch = 21, gpch = 21, bg = par("bg"), color = par("fg"),         gcolor = par("fg"), ...) 
+double
+function (n = 0) 
+dput
+function (x, file = "") 
+drop.terms
+function (termobj, dropx = NULL, keep.response = FALSE) 
+dump
+function (list, fileout = "dumpdata") 
+dunif
+function (x, min = 0, max = 1) 
+dweibull
+function (x, shape, scale = 1) 
+dyn.load
+function (x) 
+edit
+function (name = NULL, file = "", editor = options()$editor) 
+effects
+function (x, ...) 
+effects.glm
+function (object) 
+effects.lm
+function (z, term) 
+eigen
+function (x) 
+emacs
+function (name = NULL, file = "") 
+end
+function (x, ...) 
+end.ts
+function (x) 
+environment
+function (fun = NULL) 
+eval
+function (expr, envir = sys.frame(sys.parent())) 
+exists
+function (x, where = NULL, envir = NULL, frame = NULL, mode = "any",         inherits = TRUE) 
+expression
+function (...) 
+factor
+function (x, levels = sort(unique(x)), labels, exclude = NA,         ordered = FALSE) 
+family
+function (x, ...) 
+family.glm
+function (object) 
+fft
+function (z, inverse = FALSE) 
+fitted
+function (x, ...) 
+fitted.values
+function (x, ...) 
+fitted.values.glm
+function (object) 
+fitted.values.lm
+function (z) 
+fivenum
+function (x, na.rm = TRUE) 
+fix
+function (x) 
+formals
+function (fun = sys.function(sys.parent())) 
+formatC
+function (x, digits = NULL, width = max(0, digits) + 1, format = NULL,         flag = "", mode = NULL) 
+formula
+function (x, ...) 
+formula.default
+function (x) 
+formula.formula
+function (x) 
+formula.terms
+function (x) 
+frame
+function (ask = NA) 
+frame.cvt
+function (x, as.is = FALSE) 
+frequency
+function (x, ...) 
+frequency.ts
+function (x) 
+gaussian
+function () 
+get
+function (x, envir = NULL, mode = "any", inherits = TRUE) 
+getenv
+function (item) 
+gl
+function (n, k, length, labels = 1:n, ordered = FALSE) 
+glm
+function (formula, family = gaussian, data, weights = NULL, subset = NULL,         na.action = na.fail, start = NULL, offset = NULL, control = glm.control(epsilon = 0.0001,                 maxit = 10, trace = FALSE), model = TRUE, method = glm.fit,         x = FALSE, y = TRUE) 
+glm.control
+function (epsilon = 0.0001, maxit = 10, trace = FALSE) 
+glm.fit
+function (x, y, weights = rep(1, nobs), start = NULL, offset = rep(0,         nobs), family = gaussian(), control = glm.control(),         intercept = TRUE) 
+grep
+function (pattern, x, ignore.case = FALSE, extended = TRUE, value = FALSE) 
+grid
+function (nx = 3, ny = 3, col = "lightgray", lty = "dotted") 
+gsub
+function (pattern, replacement, x, ignore.case = FALSE, extended = TRUE) 
+heat.colors
+function (n) 
+help
+function (topic, data, library) 
+help.start
+function (gui = "irrelevant", browser = "netscape") 
+hist
+function (x, breaks, freq = TRUE, col = NULL, border = par("fg"),         main = paste("Histogram of", deparse(substitute(x))),         xlim = range(breaks), ylim = range(counts, 0), xlab = deparse(substitute(x)),         ylab, ...) 
+hsv
+function (h = 1, s = 1, v = 1, gamma = 1) 
+identify
+function (x, y = NULL, text = as.character(seq(x)), pos = FALSE,         ...) 
+ifelse
+function (test, yes, no) 
+image
+function (x = seq(0, 1, len = nrow(z)), y = seq(0, 1, len = ncol(z)),         z, zlim = range(z, na.rm = TRUE), col = heat.colors(12),         ...) 
+inherits
+function (x, name) 
+integer
+function (n = 0) 
+inverse.gaussian
+function () 
+is.expression
+function (x) 
+is.finite
+function (x) 
+is.na.data.frame
+function (x) 
+is.qr
+function (x) 
+is.symbol
+function (x) 
+is.ts
+function (x) 
+is.vector
+function (x, mode = "any") 
+lapply
+function (x, FUN, ...) 
+legend
+function (x, y, legend, fill, col = "black", lty, pch, bty = "o",         bg = par("bg"), xjust = 0, yjust = 1, ...) 
+library
+function (name) 
+library.dynam
+function (name) 
+license
+function () 
+lines
+function (x, ...) 
+lines.default
+function (x, y = NULL, type = "l", col = par("col"), ...) 
+lm
+function (formula, data = NULL, subset = NULL, weights = NULL,         na.action = na.fail, singular.ok = TRUE) 
+lm.fit
+function (x, y) 
+lm.influence
+function (z) 
+lm.w.fit
+function (x, y, w) 
+load
+function (file) 
+locator
+function (n = 1) 
+log10
+function (x) 
+log2
+function (x) 
+logical
+function (n = 0) 
+lower.tri
+function (x, diag = FALSE) 
+lowess
+function (x, y = NULL, f = 2/3, iter = 3, delta = 0.01 * diff(range(xy$x[o]))) 
+ls
+function (name, pos = -1, envir = NULL, all.files = FALSE, pattern) 
+ls.diag
+function (ls.out) 
+ls.print
+function (ls.out, digits = 4, print.it = TRUE) 
+lsfit
+function (x, y, wt = NULL, intercept = TRUE, tolerance = 1e-07,         yname = NULL) 
+macintosh
+function () 
+mad
+function (y, center, constant = 1.4826, na.rm = FALSE) 
+make.link
+function (link) 
+mat.or.vec
+function (nr, nc) 
+match
+function (x, table, nomatch = NA) 
+match.arg
+function (arg, choices) 
+match.call
+function (definition = NULL, call = sys.call(sys.parent()), expand.dots = T) 
+matrix
+function (data = NA, nrow = 1, ncol = 1, byrow = FALSE, dimnames = NULL) 
+max
+function (..., na.rm = FALSE) 
+mean
+function (x, trim = 0, na.rm = FALSE) 
+median
+function (x, na.rm = FALSE) 
+menu
+function (x) 
+methods
+function (generic.function, class) 
+min
+function (..., na.rm = FALSE) 
+mode
+function (x) 
+mode<-
+function (x, value) 
+model.data.frame
+function (...) 
+model.extract
+function (frame, component) 
+model.frame
+function (formula, data = sys.frame(sys.parent()), subset = NULL,         na.action = eval(as.name(options("na.action")$na.action)),         use.data = TRUE, process.offsets = TRUE, ...) 
+model.matrix
+function (formula, data) 
+model.offset
+function (x) 
+model.response
+function (data, type = "numeric") 
+model.weights
+function (x) 
+mtext
+function (text, side = 3, line = 0, outer = FALSE, at = NULL,         ...) 
+mvfft
+function (z, inverse = FALSE) 
+na.action
+function (x, ...) 
+na.action.default
+function (x) 
+na.fail
+function (frame) 
+na.omit
+function (frame) 
+named.elements
+function (x) 
+names
+function (x, ...) 
+names.default
+function (x) 
+names<-
+function (x, ...) 
+names<-.default
+function (x, n) 
+ncol
+function (x) 
+nextn
+function (n, factors = c(2, 3, 5)) 
+nlm
+function (f, p, hessian = FALSE, typsiz = rep(1, length(p)),         fscale = 1, print.level = 0, ndigit = 12, gradtl = 1e-06,         stepmx = max(1000 * sqrt(sum((p/typsiz)^2)), 1000), steptl = 1e-06,         itnlim = 100) 
+nrow
+function (x) 
+numeric
+function (n = 0) 
+objects
+function (name, pos = -1, envir = NULL, all.files = FALSE, pattern) 
+offset
+function (x) 
+optimize
+function (f, interval, lower = min(interval), upper = max(interval),         maximum = FALSE, tol = .Machine$double.eps^0.25, ...) 
+options
+function (...) 
+ordered
+function (x, levels = sort(unique(x)), labels, exclude = NA,         ordered = TRUE) 
+outer
+function (x, y, FUN = "*", ...) 
+pairs
+function (x, labels, panel = points, main = NULL, font.main = par("font.main"),         cex.main = par("cex.main"), ...) 
+panel.smooth
+function (x, y, col, pch, f = 2/3, iter = 3, ...) 
+par
+function (...) 
+par2
+function (...) 
+parse
+function (file = "", n = NULL, text = NULL, prompt = NULL, white = FALSE) 
+paste
+function (..., sep = " ", collapse = NULL) 
+pcauchy
+function (q, location = 0, scale = 1) 
+pexp
+function (q, rate = 1) 
+pgamma
+function (q, shape, scale = 1) 
+pictex
+function (file = "Rplots.tex", width = 5, height = 4, debug = FALSE,         bg = "white", fg = "black") 
+piechart
+function (x, labels = names(x), edges = 200, radius = 0.8, col = NULL,         main = NULL, ...) 
+plnorm
+function (q, meanlog = 0, sdlog = 1) 
+plogis
+function (q, location = 0, scale = 1) 
+plot
+function (x, ...) 
+plot.data.frame
+function (x, ...) 
+plot.default
+function (x, y = NULL, type = "p", col = par("fg"), bg = NA,         pch = par("pch"), xlim = NULL, ylim = NULL, log = "",         axes = TRUE, frame.plot = TRUE, panel.first = NULL, panel.last = NULL,         ann = par("ann"), main = NULL, xlab = NULL, ylab = NULL,         cex = par("cex"), lty = par("lty"), ...) 
+plot.density
+function (s, main = "", xlab, ylab = "Density", type = "l", ...) 
+plot.factor
+function (x, y, ...) 
+plot.new
+function (ask = NA) 
+plot.ts
+function (x, type = "l", xlim, ylim, xlab, ylab, log = "", col = par("col"),         bg = NA, pch = par("pch"), lty = par("lty"), ...) 
+plot.xy
+function (xy, type, pch = 1, lty = "solid", col = par("fg"),         bg = NA, cex = 1, ...) 
+pmatch
+function (x, table, nomatch = NA) 
+pmax
+function (..., na.rm = FALSE) 
+pmin
+function (..., na.rm = FALSE) 
+pnorm
+function (q, mean = 0, sd = 1) 
+points
+function (x, ...) 
+points.default
+function (x, y = NULL, pch = 1, col = "black", ...) 
+poisson
+function (link = "log") 
+polygon
+function (x, y = NULL, border = par("fg"), ...) 
+postscript
+function (file = "Rplots.ps", paper = options("papersize")$papersize,         landscape = TRUE, width = 0, height = 0, family = "Helvetica",         pointsize = 12, bg = "white", fg = "black", onefile,         print.it, append) 
+power
+function (lambda = 1) 
+ppoints
+function (x) 
+predict
+function (fit, ...) 
+predict.default
+function (object, ...) 
+pretty
+function (x, n = 5) 
+print
+function (x, ...) 
+print.anova.glm
+function (x, digits = max(3, .Options$digits - 3), na.print = "",         ...) 
+print.anova.lm
+function (x, digits = max(3, .Options$digits - 3), ...) 
+print.atomic
+function (x, quote = TRUE, ...) 
+print.default
+function (x, digits = NULL, quote = TRUE, na.print = NULL, print.gap = NULL) 
+print.expression
+function (x) 
+print.family
+function (x, ...) 
+print.formula
+function (x) 
+print.glm
+function (x, digits = max(3, .Options$digits - 3), na.print = "",         ...) 
+print.htest
+function (x, digits = 4, quote = T, prefix = "") 
+print.lm
+function (x, digits = max(3, .Options$digits - 3), ...) 
+print.summary.glm
+function (x, digits = max(3, .Options$digits - 3), na.print = "",         ...) 
+print.summary.lm
+function (x, digits = max(3, .Options$digits - 3), ...) 
+print.table
+function (x, digits = .Options$digits, quote = FALSE, na.print = "",         ...) 
+print.tabular
+function (table, digits = max(3, .Options$digits - 3), na.print = "",         ...) 
+print.terms
+function (x) 
+print.ts
+function (x, calender, ...) 
+prmatrix
+function (x, rowlab = character(0), collab = character(0), quote = TRUE,         right = FALSE) 
+prod
+function (..., na.rm = FALSE) 
+prompt
+function (object, ...) 
+prompt.default
+function (object, filename = paste0(name, ".man"), force.function = FALSE) 
+provide
+function (name) 
+punif
+function (q, min = 0, max = 1) 
+pweibull
+function (q, shape, scale = 1) 
+q
+function (save = "ask") 
+qcauchy
+function (p, location = 0, scale = 1) 
+qexp
+function (p, rate = 1) 
+qgamma
+function (p, shape, scale = 1) 
+qlnorm
+function (p, meanlog = 0, sdlog = 1) 
+qlogis
+function (p, location = 0, scale = 1) 
+qnorm
+function (p, mean = 0, sd = 1) 
+qqline
+function (y, ...) 
+qqnorm
+function (y, ylim, main = "Normal Q-Q Plot", xlab = "Theoretical Quantiles",         ylab = "Sample Quantiles", ...) 
+qqplot
+function (x, y, plot.it = TRUE, xlab = deparse(substitute(x)),         ylab = deparse(substitute(y)), ...) 
+qr
+function (x, tol = 1e-07) 
+qr.coef
+function (qr, y) 
+qr.fitted
+function (qr, y, k = qr$rank) 
+qr.qty
+function (qr, y) 
+qr.qy
+function (qr, y) 
+qr.resid
+function (qr, y) 
+qr.solve
+function (a, b, tol = 1e-07) 
+quantile
+function (x, probs = seq(0, 1, 0.25), na.rm = FALSE) 
+quasi
+function (link = "identity", variance = "constant") 
+quit
+function (save = "ask") 
+qunif
+function (p, min = 0, max = 1) 
+quote
+function (x) 
+qweibull
+function (p, shape, scale = 1) 
+rainbow
+function (n, s = 1, v = 1, start = 0, end = (n - 1)/n, gamma = 1) 
+range
+function (..., na.rm = FALSE) 
+rcauchy
+function (n, location = 0, scale = 1) 
+read.table
+function (file, header = FALSE, sep = "", row.names, col.names,         as.is = FALSE, na.strings = "NA", skip = 0) 
+real
+function (n = 0) 
+rect
+function (xleft, ybottom, xright, ytop, col = NULL, border = par("fg"),         lty = NULL, xpd = FALSE) 
+reformulate
+function (termlabels, response = NULL) 
+rep
+function (x, times, length.out) 
+replace
+function (x, list, values) 
+require
+function (name, quietly = FALSE) 
+resid
+function (x, ...) 
+residuals
+function (x, ...) 
+residuals.glm
+function (object, type = "deviance") 
+residuals.lm
+function (z) 
+rev
+function (x) 
+rexp
+function (n, rate = 1) 
+rgamma
+function (n, shape, scale = 1) 
+rgb
+function (r, g, b, names = NULL) 
+rlnorm
+function (n, meanlog = 0, sdlog = 1) 
+rlogis
+function (n, location = 0, scale = 1) 
+rm
+function (..., list = character(0), envir = NULL, inherits = FALSE) 
+rnorm
+function (n, mean = 0, sd = 1) 
+row
+function (x, as.factor = FALSE) 
+row.names
+function (x) 
+row.names<-
+function (x, value) 
+rownames
+function (x) 
+rownames<-
+function (x, value) 
+rstudent
+function (z) 
+runif
+function (n, min = 0, max = 1) 
+rweibull
+function (n, shape, scale = 1) 
+sample
+function (x, size, replace = FALSE) 
+sapply
+function (X, FUN, ..., simplify = TRUE) 
+save
+function (..., list = character(0), file = "", ascii = FALSE) 
+scan
+function (file = "", what = 0, nmax = -1, sep = "", skip = 0,         nlines = 0, na.strings = "NA", flush = FALSE, strip.white = FALSE,         quiet = FALSE) 
+sd
+function (x, na.rm = FALSE) 
+segments
+function (x0, y0, x1, y1, col = par("fg"), lty = par("lty")) 
+seq
+function (from = 1, to = 1, by = ((to - from)/(length.out - 1)),         length.out = NULL, along.with = NULL) 
+sequence
+function (nvec) 
+solve
+function (a, b, tol = 1e-07) 
+solve.qr
+function (a, b, tol = 1e-07) 
+sort
+function (x, partial = NULL, na.last = NA) 
+source
+function (file, local = FALSE) 
+spline
+function (x, y, n = 3 * length(x), method = "fmm", xmin = min(x),         xmax = max(x)) 
+splinefun
+function (x, y, method = "fmm") 
+split
+function (x, f) 
+start
+function (x, ...) 
+start.ts
+function (x) 
+stat.anova
+function (table, test, scale, df.scale, n) 
+stem
+function (x, scale = 1, width = 80, atom = 1e-08) 
+storage.mode
+function (x) 
+storage.mode<-
+function (x, value) 
+stripplot
+function (x, method = "overplot", jitter = 0.1, offset = 1/3,         vertical = FALSE, group.names, xlim, ylim, main = "",         ylab = "", xlab = "", pch = 0, col = par("fg"), cex = par("cex")) 
+strsplit
+function (x, split) 
+structure
+function (.Data, ...) 
+strwidth
+function (s, units = "user", cex = NULL) 
+sub
+function (pattern, replacement, x, ignore.case = FALSE, extended = TRUE) 
+substr
+function (x, start, stop) 
+substring
+function (text, first, last = 1000000) 
+sum
+function (..., na.rm = FALSE) 
+summary
+function (x, ...) 
+summary.data.frame
+function (x, maxsum = 7, ...) 
+summary.default
+function (object, ..., digits = max(options()$digits - 3, 3)) 
+summary.factor
+function (x, maxsum = 100, ...) 
+summary.glm
+function (object, dispersion = NULL, correlation = TRUE, na.action = na.omit) 
+summary.lm
+function (z, correlation = FALSE) 
+summary.matrix
+function (x, ...) 
+svd
+function (x, nu = min(n, p), nv = min(n, p)) 
+sweep
+function (x, MARGIN, STATS, FUN = "-", ...) 
+switch
+function (EXPR, ...) 
+sys.call
+function (which = 0) 
+sys.calls
+function () 
+sys.frame
+function (which = 0) 
+sys.frames
+function () 
+sys.function
+function (which = 0) 
+sys.nframe
+function () 
+sys.on.exit
+function () 
+sys.parent
+function (n = 1) 
+sys.parents
+function () 
+sys.source
+function (file) 
+sys.status
+function () 
+system
+function (call, intern = FALSE) 
+system.file
+function (dir, name) 
+t.test
+function (x, y = NULL, alternative = "two.sided", mu = 0, paired = FALSE,         var.equal = FALSE, conf.level = 0.95) 
+table
+function (x, ...) 
+tabulate
+function (bin, nbins = max(bin)) 
+tapply
+function (x, INDEX, FUN, ...) 
+terms
+function (x, ...) 
+terms.default
+function (x) 
+terms.formula
+function (x, specials = NULL, abb = NULL, data = NULL, keep.order = FALSE) 
+terms.terms
+function (x) 
+terrain.colors
+function (n) 
+text
+function (x, y = NULL, text, ...) 
+time
+function (x, ...) 
+time.ts
+function (x) 
+title
+function (main = NULL, sub = NULL, xlab = NULL, ylab = NULL,         ...) 
+topo.colors
+function (n) 
+traceback
+function () 
+trunc
+function (x) 
+ts
+function (data = NA, start = 1, end = numeric(0), frequency = 1,         deltat = 1) 
+tsp
+function (x) 
+tsp<-
+function (x, tsp) 
+uniroot
+function (f, interval, lower = min(interval), upper = max(interval),         tol = .Machine$double.eps^0.25, ...) 
+unix.time
+function (expr) 
+update
+function (x, ...) 
+update.lm
+function (lm.obj, formula, data, weights, subset, na.action) 
+upper.tri
+function (x, diag = FALSE) 
+var
+function (x, y = x, na.rm = FALSE) 
+vi
+function (name = NULL, file = "") 
+weighted.mean
+function (x, w, na.rm = FALSE) 
+weights
+function (x, ...) 
+weights.lm
+function (z) 
+which
+function (x) 
+window
+function (x, ...) 
+window.ts
+function (x, start, end) 
+windows
+function () 
+write
+function (x, file = "data", ncolumns = if (is.character(x)) 1 else 5,         append = FALSE) 
+x11
+function (display = "", width = 7, height = 7, ps = 12, printcmd = options("printcmd")$printcmd,         paper = options("papersize")$papersize, orientation = "flexible") 
+xedit
+function (name = NULL, file = "") 
+xemacs
+function (name = NULL, file = "") 
+xinch
+function (x = 1) 
+xy.coords
+function (x, y, xlab = NULL, ylab = NULL) 
+yinch
+function (x = 1) 
