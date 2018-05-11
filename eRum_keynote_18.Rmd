@@ -1,0 +1,617 @@
+---
+title: "A practical history of R (where things came from)"
+author: "Roger Bivand"
+date: "16 May 2018"
+output: 
+  beamer_presentation:
+    theme: m
+    pandoc_args: [
+      "--latex-engine=xelatex"
+    ]
+    highlight: pygments
+    includes:
+      in_header: header.tex
+    keep_tex: true
+classoption: "aspectratio=169"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r size, echo=FALSE, results='hide'}
+knitr::knit_hooks$set(mysize = function(before, options, envir) {
+  if (before) 
+    return(options$size)
+})
+knitr::opts_chunk$set(prompt=TRUE)
+suppressMessages(library(extrafont))
+suppressMessages(loadfonts())
+```
+
+```{r set-options, echo=FALSE, results='hide'}
+options(width = 100)
+```
+
+## Introduction
+
+- Not infrequently, we wonder why choices such as `stringsAsFactors=TRUE` or `drop=TRUE` were made. 
+
+- Understanding the original uses of S and R (in the 1980s and 1990s), and seeing how these uses affected the development of R lets us appreciate the robustness of R's ecosystem. 
+
+- This keynote uses readings of the R sources and other information to explore R's history. The topics to be touched on include the "colour" books (brown, blue, white, green), interlinkages to SICP (Scheme) and LispStat
+
+- We'll also touch on the lives of R-core, the mailing lists  and CRAN, and Ancients and Moderns (see [\textcolor{mLightBrown}{Exploring the CRAN social network}](http://www.pieceofk.fr/?p=431)).
+
+# History of R and its data structures
+
+## Sources
+
+- [\textcolor{mLightBrown}{Rasmus Bååth}](http://www.sumsar.net/blog/2014/11/tidbits-from-books-that-defined-s-and-r/) has a useful blog piece on R's antecedents in the S language
+
+- Something similar is present in the second chapter of \citep{chambers:16}, from the viewpoint of one of those responsible for the development of the S language
+
+- In addition to S, we need to take [\textcolor{mLightBrown}{SICP and Scheme}](http://sarabander.github.io/sicp/html/index.xhtml) into account \citep[][second edition]{sicp2e}, as described by \citet{ihaka:1996} and \citet{wickham:14}
+
+- Finally, LispStat and its creators have played and continue to play a major role in developing R \citep{Tierney1990,Tierney1996,JSSv013i09}
+
+
+## From S to R: Brown Books
+
+\begincols
+\begincol{0.48\textwidth}
+
+\citet{becker+chambers:84}: {S}: An Interactive Environment for Data Analysis and Graphics, A.K.A. the Brown Book
+
+\citet{becker+chambers:85}: Extending the {S} System
+
+\endcol
+
+\begincol{0.48\textwidth}
+
+\includegraphics[width=0.95\textwidth]{../pix/S2_books.png}
+
+\endcol
+\endcols
+
+## From S to R: Blue and White Books
+
+\begincols
+\begincol{0.48\textwidth}
+
+\citet{R:Becker+Chambers+Wilks:1988}: The New S Language: A Programming Environment for Data Analysis and Graphics, A.K.A. the Blue Book.
+
+\citet{R:Chambers+Hastie:1992}: Statistical Models in S edited by John M. Chambers and Trevor J. Hastie (1992), A.K.A. the White Book.
+
+\endcol
+
+\begincol{0.48\textwidth}
+
+\includegraphics[width=0.95\textwidth]{../pix/S3_books.png}
+
+\endcol
+\endcols
+
+## From S to R: Green Book
+
+\begincols
+\begincol{0.48\textwidth}
+
+\citet{R:Chambers:1998}: Programming with Data: A Guide to the S Language, A.K.A. the Green Book.
+
+\citet{R:Venables+Ripley:2000}: S Programming
+
+\endcol
+
+\begincol{0.48\textwidth}
+
+\includegraphics[width=0.95\textwidth]{../pix/S4_books.png}
+
+\endcol
+\endcols
+
+
+## S2 to S3 to S4
+
+- The S2 system was described in the Brown Book, S3 in the Blue Book and completed in the White Book, finally S4 in the Green Book
+
+- The big advance from S2 to S3 was that users could write functions; that data.frame objects were defined; that formula objects were defined; and that S3 classes and method dispatch appeared
+
+- S4 brought connections and formal S4 classes, the latter seen in R in the **methods** package ([\textcolor{mLightBrown}{still controversial}](https://stat.ethz.ch/pipermail/r-devel/2017-December/075304.html))
+
+- [\textcolor{mLightBrown}{S-PLUS}](https://en.wikipedia.org/wiki/S-PLUS) was/is the commercial implementation of [\textcolor{mLightBrown}{S}](https://en.wikipedia.org/wiki/S_(programming_language)) and its releases drove S3 and S4 changes
+
+## S, Bell Labs, S-PLUS
+
+- S was a Bell Labs innovation, like Unix, C, C++, and many interpreted languages (like AWK); many of these share key understandings
+
+- Now owned by Nokia, previously Alcatel-Lucent, Lucent, and AT&T
+
+- Why would a telecoms major (AT&T) pay for fundamental research in computer science and data analysis (not to sell or market other products better)?
+
+- Some Green Book examples are for quality control of telecoms components
+
+## S-PLUS and R
+
+- S-PLUS was quickly adopted for teaching and research, and with S3, provided extensibility in the form of libraries
+
+- Most links have died by now, but see this [\textcolor{mLightBrown}{FAQ}](http://ftp.uni-bayreuth.de/math/statlib/S/FAQ) for a flavour - there was a lively community of applied statisticians during the 1990s
+
+- Academics like Ross Ihaka and Robert Gentleman found S-PLUS constraining (platform, price, data structures)
+
+- ... so we get to R
+
+## Early R was Scheme via SICP
+
+![Ross Ihaka's description](ihaka10.png)
+([\textcolor{mLightBrown}{JSM talk}](https://www.stat.auckland.ac.nz/%7Eihaka/downloads/JSM-2010.pdf))
+
+## and what about LispStat?
+
+- Luke Tierney was in R core in 1997, and has continued to exert clear influence over development
+
+- Because R uses a Scheme engine, similar to Lisp, under the hood, his insight into issues like the garbage collector, namespaces, byte-compilation, serialization, parallelization, and now [\textcolor{mLightBrown}{ALTREP}](http://blog.revolutionanalytics.com/2018/04/r-350.html) has been crucial ([\textcolor{mLightBrown}{see also the proposal by Luke Tierney, Gabe Becker and Tomas Kalibera}](https://svn.r-project.org/R/branches/ALTREP/ALTREP.html))
+
+- Many of these issues involve the defensive copy on possible change policy involved in lazy evaluation, which may lead to multiple redundant copies of data being present in memory
+
+- Luke Tierney and Brian Ripley have fought hard to let R load fast, something that is crucial to ease the use of R on multicore systems or inside databases
+
+# Vintage R
+
+## Use questions: left assign
+
+\begincols
+\begincol{0.48\textwidth}
+
+Why was `underscore_separated` not a permitted naming convention in R earlier (see  [\textcolor{mLightBrown}{\citet{RJ-2012-018}}](https://journal.r-project.org/archive/2012/RJ-2012-018/index.html))? `_` was not a permitted character in names until it had lost its left assign role, the same as `<-`, in 1.9.0 in 2004. (Brown Book p. 256, Blue Book p. 387)
+\endcol
+
+\begincol{0.48\textwidth}
+
+\includegraphics[width=0.95\textwidth]{../pix/assign.png}
+
+\endcol
+\endcols
+
+
+
+## Use questions: `strings`A`s`F`actors`
+
+\begincols
+\begincol{0.48\textwidth}
+
+Why is the `factor` storage mode still so central? `stringsAsFactors = TRUE` was the legacy `as.is = FALSE`; analysis of categorical variables was more important, and `factor` only needed to store `nlevels()` strings (White Book p. 55-56, 567)
+\endcol
+
+\begincol{0.48\textwidth}
+
+\includegraphics[width=0.95\textwidth]{../pix/asis1.png}
+
+\endcol
+\endcols
+
+## Use questions: `drop`
+
+\begincols
+\begincol{0.48\textwidth}
+
+`drop = TRUE` for array-like objects; since matrices are vectors with a `dim` atrribute, choosing (part of) a row or column made `dim` redundant (Blue Book p. 128, White Book p. 64)
+\endcol
+
+\begincol{0.48\textwidth}
+
+\includegraphics[width=0.95\textwidth]{../pix/drop.png}
+
+\endcol
+\endcols
+
+## But scalars are also vectors ...
+
+Treating scalars as vectors is not efficient:
+
+\includegraphics[width=0.95\textwidth]{../pix/Screenshot-2018-4-6 Ihaka Lecture Series 2017 Statistical computing in a (more) static environment - YouTube.png}
+
+## Vintage R
+
+- An [\textcolor{mLightBrown}{R-0.49 source tarball}](https://cran.r-project.org/src/base/R-0/R-0.49.tgz) is available from CRAN
+
+- Diffs for Fedora 27 (gcc 7.3.1) include setting compilers and `-fPIC` in `config.site`, putting `./` before `config.site` in `configure`, and three corrections in `src/unix`: in `dataentry.h` add `#include <X11/Xfuncproto.h>` and comment out `NeedFunctionPrototypes`; in `rotated.c` comment out `/*static*/ double round`; in `system.c` comment out `__setfpucw` twice; BLAS must be provided externally
+
+- Not (yet) working: prototypes are missing in the **eda** and **mva** packages so the shared objects fail to build 
+
+- [\textcolor{mLightBrown}{R-0.49 video}](run:R-0.49-2018-05-09\_09.07.15.mp4)
+
+# R SVN logs
+
+## R SVN logs
+
+- The command: `svn log --xml --verbose -r 6:74688 https://svn.r-project.org/R/trunk > trunk_verbose_log1.xml` provides a rich data source
+
+- Each log entry has a revision number, author and timestamp, message and paths to files indicating the action undertaken for each file
+
+- The XML version is somewhat easier to untangle than the plain-text version
+
+- I haven't tried possible similar approaches to Winston Chang's [\textcolor{mLightBrown}{github r-source repo}](https://github.com/wch/r-source)
+
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE, results="hide"}
+library(XML)
+tr <- try(xmlTreeParse("../code/trunk_verbose_log1.xml"))
+tr1 <- xmlChildren(xmlRoot(tr))
+revs <- sapply(tr1, function(x) unname(xmlAttrs(x)))
+msgs <- sapply(tr1, function(x) xmlValue(xmlChildren(x)[["msg"]]))
+authors <- unname(sapply(tr1, function(x) xmlValue(xmlChildren(x)[["author"]])))
+dates <- strptime(substring(unname(sapply(tr1, function(x) xmlValue(xmlChildren(x)[["date"]]))), 1, 18), format="%Y-%m-%dT%H:%M:%S", tz="UTC")
+years <- format(dates, "%Y")
+```
+
+## Commits 1998-2017
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE, results="hide"}
+n1 <- sub("thomas", "tlumley", authors)
+n2 <- sub("martyn", "plummer", n1)
+n3 <- sub("^r$", "rgentlem", n2)
+n4 <- sub("paul", "murrell", n3)
+n5 <- sub("root", "system", n4)
+n6 <- sub("apache", "system", n5)
+authors <- factor(n6)
+ad_tab <- table(authors, years)
+rs <- rowSums(ad_tab)
+```
+
+
+```{r, fig1, fig.show='hide', fig.height=6, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent")}
+pal <- scan("../colormap_hex.txt", "character", quiet=TRUE)
+set.seed(1)
+pal_s <- sample(sample(pal))
+plot(1998:2017, colSums(ad_tab)[2:21], type="b", xlab="", ylab="SVN commits", ylim=c(0, 4000))
+grid()
+abline(v=c(2000.1639344, 2004.7568306, 2013.2547945), col=pal_s[1:3], lwd=2)
+legend("topright", legend=c("1.0.0 2000-02-29", "2.0.0 2004-10-04", "3.0.0 2013-04-03"), col=pal_s[1:3], bty="n", cex=0.8, lty=1, lwd=2)
+```
+\includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig1-1.pdf}
+
+## Commits by author and year between r6 and r74688
+
+```{r, fig2, fig.show='hide', fig.height=6, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent")}
+barplot(ad_tab[order(rs)[5:27],], col=pal_s)
+legend("topright", legend=rev(rownames(ad_tab)[order(rs)[5:27]]), ncol=5, fill=rev(pal_s), cex=0.8, bty="n")
+``` 
+\includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig2-1.pdf}
+
+## XML logentry structure
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+tr1[[1]]
+```
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+tr1[[length(tr1)]]
+```
+
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE, results="hide"}
+res <- vector(mode="list", length=length(tr1))
+for (i in seq_along(tr1)) res[[i]] <- {x=xmlChildren(xmlChildren(tr1[[i]])[["paths"]]); list(paths=unname(sapply(x, xmlValue)), actions=unname(sapply(x, function(y) xmlAttrs(y)["action"])))}
+names(res) <- revs
+rl <- sapply(res, function(x) length(x$actions))
+```
+
+
+## Commit messages by number of files affected, year and revision
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+cat(paste(years[order(rl, decreasing=TRUE)][1:10], revs[order(rl, decreasing=TRUE)][1:10], sort(unname(rl), decreasing=TRUE)[1:10], unname(unlist(sub("\\n", ", ", msgs[order(rl, decreasing=TRUE)])))[1:10]), sep="\n")
+```
+
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+res50 <- res[rl < 50]
+rl_50 <- rl[rl < 50]
+f_50 <- unlist(sapply(res50, "[", 1))
+a_50 <- unlist(sapply(res50, "[", 2))
+a_50_actions <- unname(a_50)
+f_50_files <- unname(f_50)
+f_50_filesa <- substring(f_50_files, 2, nchar(f_50_files))
+f_50_filesb <- strsplit(f_50_filesa, "/")
+f_50_filesc <- t(sapply(f_50_filesb, function(x) {out <- character(9); out[1:length(x)] <- x; out}))
+files_df <- data.frame(f_50_filesc)
+```
+
+## Epoch file commits in trunk/
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+tx <- table(files_df$X2)
+sort(tx[tx>350])
+```
+
+## Epoch file commits in trunk/src
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+tx <- table(files_df[files_df$X2=="src",]$X3)
+sort(tx[tx>50])
+```
+
+## Epoch file commits in trunk/src/library
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+tx <- table(files_df[files_df$X2=="src" & files_df$X3=="library",]$X4)
+sort(tx[tx>60])
+```
+
+## Epoch file commits in trunk/src/library/base
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+tx <- table(files_df[files_df$X2=="src" & files_df$X3=="library" & files_df$X4=="base",]$X5)
+sort(tx[tx>4])
+```
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+a_50_revs <- rep(names(rl_50), times=rl_50)
+o <- match(a_50_revs, revs)
+a_50_years <- years[o]
+t_acts <- table(a_50_years, factor(a_50_actions))
+```
+
+## Files by year and commit action
+
+```{r, fig3, fig.show='hide', fig.height=5, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent")}
+barplot(t(t_acts), col=rev(pal_s)[1:4])
+legend("topright", legend=c("A The item was added", "D The item was deleted", "M The item was changed", "R The item was replaced"), ncol=2, fill=rev(pal_s)[1:4], cex=0.8, bty="n")
+```
+\includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig3-1.pdf}
+
+
+# CRAN and BioConductor packages
+
+## CRAN
+
+- Once S3 permitted extension by writing functions, and packaging functions in libraries, S and R ceased to be monolithic
+
+- In R, a library is where packages are kept, distinguishing between base and recommended packages distributed with R, and contributed packages 
+
+- Contributed packages can be installed from CRAN (infrastructure built on CPAN and CTAN for Perl and Tex), Bioconductor, other package repositories, and other sources such as github
+
+- With over 12000 contributed packages, CRAN is central to the R community, but is stressed by dependency issues (CRAN is not run by R core)
+
+## CRAN/BioConductor package clusters
+
+- Andrie de Vries [\textcolor{mLightBrown}{Finding clusters of CRAN packages using \pkg{igraph}}](http://blog.revolutionanalytics.com/2014/12/finding-clusters-of-cran-packages-using-igraph.html) looked at CRAN package clusters from a page rank graph
+
+- We are over three years further on now, so updating may be informative
+
+- However, this is only CRAN, and there is the big BioConductor repository to consider too
+
+- Adding in the BioConductor (S4, curated) repo does alter the optics, as you'll see, over and above the cluster dominated by **Rcpp**
+
+
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE, warning=FALSE, results="hide"}
+suppressPackageStartupMessages(library(BiocInstaller))
+bioc <- available.packages(repo = biocinstallRepos()[1])
+bioc_ann <- available.packages(repo = biocinstallRepos()[2])
+bioc_exp <- available.packages(repo = biocinstallRepos()[3])
+cran <- available.packages()
+pdb <- rbind(cran, bioc, bioc_ann, bioc_exp)
+```
+
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE, warning=FALSE, results="hide"}
+suppressPackageStartupMessages(library(miniCRAN))
+suppressPackageStartupMessages(library(igraph))
+suppressPackageStartupMessages(library(magrittr))
+pg <- makeDepGraph(pdb[, "Package"], availPkgs = pdb, suggests=FALSE, enhances=TRUE, includeBasePkgs = FALSE)
+```
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE, results="hide"}
+pr <- pg %>%
+page.rank(directed = FALSE) %>%
+use_series("vector") %>%
+sort(decreasing = TRUE) %>%
+as.matrix %>%
+set_colnames("page.rank")
+```
+
+## CRAN/BioConductor package page rank scores
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+print(pr[1:30,], digits=4)
+```
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE, results="hide"}
+cutoff <- quantile(pr[, "page.rank"], probs = 0.2)
+popular <- pr[pr[, "page.rank"] >= cutoff, ]
+toKeep <- names(popular)
+vids <- V(pg)[toKeep]
+gs <- induced.subgraph(pg, vids = toKeep)
+cl <- walktrap.community(gs, steps = 3)
+```
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE, results="hide"}
+topClusters <- table(cl$membership) %>%
+sort(decreasing = TRUE) %>%
+head(25)
+cluster <- function(i, clusters, pagerank, n=10){
+group <- clusters$names[clusters$membership == i]
+pagerank[group, ] %>% sort(decreasing = TRUE) %>% head(n)
+}
+z <- lapply(names(topClusters)[1:15], cluster, clusters=cl, pagerank=pr, n=20)
+```
+
+## CRAN/BioConductor top two page rank clusters
+
+```{r, fig4, fig.show='hide', fig.height=5, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent"), warning=FALSE}
+library(RColorBrewer)
+library(wordcloud)
+opar <- par(mar=c(0,0,0,0)+0.1, mfrow=c(1,2))
+for (i in 1:2) wordcloud(names(z[[i]]), freq=unname(z[[i]]), scale=rev(5*range(unname(z[[i]]))/max(unname(z[[5]]))))
+par(opar)
+```
+\includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig4-1.pdf}
+
+## CRAN/BioConductor top six page rank clusters
+
+```{r, fig5, fig.show='hide', fig.height=5, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent"), warning=FALSE}
+opar <- par(mar=c(0,0,0,0)+0.1, mfrow=c(2,3))
+for (i in 1:6) wordcloud(names(z[[i]]), freq=unname(z[[i]]), scale=rev(3*range(unname(z[[i]]))/max(unname(z[[5]]))))
+par(opar)
+```
+\includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig5-1.pdf}
+
+## CRAN/BioConductor package author clusters
+
+- Francois Keck explored CRAN package co-authorship in a more recent blog: [\textcolor{mLightBrown}{Exploring the CRAN social network}](http://www.pieceofk.fr/?p=431) 
+
+- Once again, a little time has passed, so maybe things have shifted
+
+- Thanks to Martin Morgan, I've added listings corresponding in part to `tools::CRAN_package_db()`
+
+- It is refreshing to see that BioConductor is clearly present, and the people implicated are active in upgrading R internals
+
+
+```{r , echo = FALSE, eval=FALSE, mysize=TRUE, size='\\tiny', cache=TRUE}
+pdb0 <- tools::CRAN_package_db()
+url <- url("https://bioconductor.org/packages/release/bioc/VIEWS")
+dcf <- as.data.frame(read.dcf(url), stringsAsFactors=FALSE)
+close(url)
+url_ann <- url("https://bioconductor.org/packages/release/data/annotation/VIEWS")
+dcf_ann <- as.data.frame(read.dcf(url_ann), stringsAsFactors=FALSE)
+close(url_ann)
+url_exp <- url("https://bioconductor.org/packages/release/data/experiment/VIEWS")
+dcf_exp <- as.data.frame(read.dcf(url_exp), stringsAsFactors=FALSE)
+close(url_exp)
+o1 <- intersect(names(dcf_exp), names(dcf_ann))
+dcf2 <- rbind(dcf_exp[,o1], dcf_ann[,o1])
+o2 <- intersect(names(dcf), names(dcf2))
+dcf3 <- rbind(dcf2[,o2], dcf[,o2])
+o3 <- intersect(names(pdb0), names(dcf3))
+pdb <- rbind(pdb0[o3], dcf3[o3])
+#o3 <- intersect(names(pdb0), names(dcf))
+#pdb <- rbind(pdb0[o3], dcf[o3])
+#pdb <- tools::CRAN_package_db()
+aut <- pdb$Author
+```
+
+```{r , echo = FALSE, eval=FALSE, mysize=TRUE, size='\\tiny', cache=TRUE, warning=FALSE, results="hide"}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(stringr))
+suppressPackageStartupMessages(library(igraph))
+suppressPackageStartupMessages(library(tidygraph))
+suppressPackageStartupMessages(library(ggraph))
+suppressPackageStartupMessages(library(magrittr))
+```
+
+```{r , echo = FALSE, eval=FALSE, mysize=TRUE, size='\\tiny', cache=TRUE, results="hide"}
+aut <- aut %>%
+  str_replace_all("\\(([^)]+)\\)", "") %>%
+  str_replace_all("\\[([^]]+)\\]", "") %>%
+  str_replace_all("<([^>]+)>", "") %>%
+  str_replace_all("\n", " ") %>%
+  str_replace_all("[Cc]ontribution.* from|[Cc]ontribution.* by|[Cc]ontributors", " ") %>%
+  str_replace_all("\\(|\\)|\\[|\\]", " ") %>%
+  iconv(to = "ASCII//TRANSLIT") %>%
+  str_replace_all("'$|^'", "") %>%
+  gsub("([A-Z])([A-Z]{1,})", "\\1\\L\\2", ., perl = TRUE) %>%
+  gsub("\\b([A-Z]{1}) \\b", "\\1\\. ", .) %>%
+  map(str_split, ",|;|&| \\. |--|(?<=[a-z])\\.| [Aa]nd | [Ww]ith | [Bb]y ", simplify = TRUE) %>%
+  map(str_replace_all, "[[:space:]]+", " ") %>%
+  map(str_replace_all, " $|^ | \\.", "") %>%
+  map(function(x) x[str_length(x) != 0]) %>%
+  set_names(pdb$Package) %>%
+  extract(map_lgl(., function(x) length(x) > 1))
+```
+
+```{r , echo = FALSE, eval=FALSE, mysize=TRUE, size='\\tiny', cache=TRUE, results="hide"}
+aut_list <- aut %>%
+  unlist() %>%
+  dplyr::as_data_frame() %>%
+  count(value) %>%
+  rename(Name = value, Package = n)
+```
+
+```{r , echo = FALSE, eval=FALSE, mysize=TRUE, size='\\tiny', cache=TRUE, results="hide"}
+edge_list <- aut %>%
+  map(combn, m = 2) %>%
+  do.call("cbind", .) %>%
+  t() %>%
+  dplyr::as_data_frame() %>%
+  arrange(V1, V2) %>%
+  count(V1, V2)
+```
+
+```{r , echo = FALSE, eval=FALSE, mysize=TRUE, size='\\tiny', cache=TRUE, results="hide"}
+g <- edge_list %>%
+  select(V1, V2) %>%
+  as.matrix() %>%
+  graph.edgelist(directed = FALSE) %>%
+  as_tbl_graph() %>%
+  activate("edges") %>%
+  mutate(Weight = edge_list$n) %>%
+  activate("nodes") %>%
+  rename(Name = name) %>%
+  mutate(Component = group_components()) %>%
+  filter(Component == names(table(Component))[which.max(table(Component))])
+```
+
+```{r , echo = FALSE, eval=FALSE, mysize=TRUE, size='\\tiny', cache=TRUE, results="hide"}
+suppressMessages(g <- g %>%
+  left_join(aut_list) %>%
+  filter(Package > 4) %>%
+  mutate(Component = group_components()) %>%
+  filter(Component == names(table(Component))[which.max(table(Component))]))
+```
+
+```{r , echo = FALSE, eval=FALSE, mysize=TRUE, size='\\tiny', cache=TRUE, results="hide"}
+g <- mutate(g, Community = group_edge_betweenness(),
+            Degree = centrality_degree())
+```
+
+```{r , echo = FALSE, eval=FALSE, mysize=TRUE, size='\\tiny', cache=TRUE, results="hide"}
+lapply(1:6, function(i) {filter(g, Community == names(sort(table(Community), decr = TRUE))[i]) %>%
+select(Name, Package) %>%
+arrange(desc(Package)) %>%
+top_n(100, Package) %>% as.data.frame()}) -> comms
+```
+
+
+## First 3 package author clusters
+
+![extract_ hell](../pix/Screenshot from 2018-05-11 14-11-22.png)
+
+
+
+## First two package author clusters
+
+```{r, fig6, eval=FALSE, fig.show='hide', fig.height=5, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent")}
+opar <- par(mar=c(0,0,0,0)+0.1, mfrow=c(1,2))
+for (i in 1:2) wordcloud(comms[[i]]$Name, freq=comms[[i]]$Package, scale=rev(3.75*range(comms[[i]]$Package)/max(comms[[2]]$Package)))
+par(opar)
+```
+\includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig6-1.pdf}
+
+## First 6 package author clusters
+
+```{r, fig7, eval=FALSE, fig.show='hide', fig.height=5, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent")}
+opar <- par(mar=c(0,0,0,0)+0.1, mfrow=c(2,3))
+for (i in 1:6) wordcloud(comms[[i]]$Name, freq=comms[[i]]$Package, scale=rev(2.75*range(comms[[i]]$Package)/max(comms[[2]]$Package)))
+par(opar)
+```
+\includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig7-1.pdf}
+
+
+## Roundup: history
+
+- Many sources in applied statistics with an S-like syntax but Lisp/Scheme-like internals, and sustained tensions between these
+
+- Many different opinions on prefered ways of structuring data and data handling, opening for adaptations to different settings
+
+- More recently larger commercial interest in handling large input long data sets, previously also present; simulations also generate large output data sets; bioinformatics both wide and long
+
+- Differing views of the world in terms of goals and approaches
+
+- Differences provide ecological robustness
+
+
+
+\nobibliography{bus463}
+
+
