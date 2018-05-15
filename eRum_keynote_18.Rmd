@@ -30,8 +30,14 @@ suppressMessages(loadfonts())
 ```
 
 ```{r set-options, echo=FALSE, results='hide'}
-options(width = 100)
+options(width = 64)
 ```
+
+## Source and links
+
+The  keynote presentation files are on github at: 
+[\textcolor{mLightBrown}{rsbivand/eRum18}](https://github.com/rsbivand/eRum18)
+
 
 ## Introduction
 
@@ -55,15 +61,21 @@ options(width = 100)
 
 - Finally, LispStat and its creators have played and continue to play a major role in developing R \citep{Tierney1990,Tierney1996,JSSv013i09}
 
+## Early R was Scheme via SICP
+
+![Ross Ihaka's description](ihaka10.png)
+
+([\textcolor{mLightBrown}{JSM talk}](https://www.stat.auckland.ac.nz/%7Eihaka/downloads/JSM-2010.pdf))
+
 
 ## From S to R: Brown Books
 
 \begincols
 \begincol{0.48\textwidth}
 
-\citet{becker+chambers:84}: {S}: An Interactive Environment for Data Analysis and Graphics, A.K.A. the Brown Book
+\citet{becker+chambers:84}: S: An Interactive Environment for Data Analysis and Graphics, A.K.A. the Brown Book
 
-\citet{becker+chambers:85}: Extending the {S} System
+\citet{becker+chambers:85}: Extending the S System
 
 \endcol
 
@@ -81,7 +93,7 @@ options(width = 100)
 
 \citet{R:Becker+Chambers+Wilks:1988}: The New S Language: A Programming Environment for Data Analysis and Graphics, A.K.A. the Blue Book.
 
-\citet{R:Chambers+Hastie:1992}: Statistical Models in S edited by John M. Chambers and Trevor J. Hastie (1992), A.K.A. the White Book.
+\citet{R:Chambers+Hastie:1992}: Statistical Models in S, A.K.A. the White Book.
 
 \endcol
 
@@ -137,14 +149,10 @@ options(width = 100)
 
 - Most links have died by now, but see this [\textcolor{mLightBrown}{FAQ}](http://ftp.uni-bayreuth.de/math/statlib/S/FAQ) for a flavour - there was a lively community of applied statisticians during the 1990s
 
-- Academics like Ross Ihaka and Robert Gentleman found S-PLUS constraining (platform, price, data structures)
+- S built on a long tradition of documentation through examples, with use cases and data sets taken from the applied statistical literature; this let users compare output with methods descriptions
 
 - ... so we get to R
 
-## Early R was Scheme via SICP
-
-![Ross Ihaka's description](ihaka10.png)
-([\textcolor{mLightBrown}{JSM talk}](https://www.stat.auckland.ac.nz/%7Eihaka/downloads/JSM-2010.pdf))
 
 ## and what about LispStat?
 
@@ -281,11 +289,12 @@ legend("topright", legend=rev(rownames(ad_tab)[order(rs)[5:27]]), ncol=5, fill=r
 
 ## XML logentry structure
 
-```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
 tr1[[1]]
 ```
+## XML logentry structure
 
-```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
 tr1[[length(tr1)]]
 ```
 
@@ -300,7 +309,7 @@ rl <- sapply(res, function(x) length(x$actions))
 
 ## Commit messages by number of files affected, year and revision
 
-```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
 cat(paste(years[order(rl, decreasing=TRUE)][1:10], revs[order(rl, decreasing=TRUE)][1:10], sort(unname(rl), decreasing=TRUE)[1:10], unname(unlist(sub("\\n", ", ", msgs[order(rl, decreasing=TRUE)])))[1:10]), sep="\n")
 ```
 
@@ -320,33 +329,33 @@ files_df <- data.frame(f_50_filesc)
 
 ## Epoch file commits in trunk/
 
-```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
 tx <- table(files_df$X2)
 sort(tx[tx>350])
 ```
 
 ## Epoch file commits in trunk/src
 
-```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
 tx <- table(files_df[files_df$X2=="src",]$X3)
 sort(tx[tx>50])
 ```
 
 ## Epoch file commits in trunk/src/library
 
-```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
 tx <- table(files_df[files_df$X2=="src" & files_df$X3=="library",]$X4)
-sort(tx[tx>60])
+sort(tx[tx>200])
 ```
 
 ## Epoch file commits in trunk/src/library/base
 
-```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
 tx <- table(files_df[files_df$X2=="src" & files_df$X3=="library" & files_df$X4=="base",]$X5)
 sort(tx[tx>4])
 ```
 
-```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
 a_50_revs <- rep(names(rl_50), times=rl_50)
 o <- match(a_50_revs, revs)
 a_50_years <- years[o]
@@ -362,7 +371,7 @@ legend("topright", legend=c("A The item was added", "D The item was deleted", "M
 \includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig3-1.pdf}
 
 
-# CRAN and BioConductor packages
+# CRAN and Bioconductor packages
 
 ## CRAN
 
@@ -374,15 +383,15 @@ legend("topright", legend=c("A The item was added", "D The item was deleted", "M
 
 - With over 12000 contributed packages, CRAN is central to the R community, but is stressed by dependency issues (CRAN is not run by R core)
 
-## CRAN/BioConductor package clusters
+## CRAN/Bioconductor package clusters
 
 - Andrie de Vries [\textcolor{mLightBrown}{Finding clusters of CRAN packages using \pkg{igraph}}](http://blog.revolutionanalytics.com/2014/12/finding-clusters-of-cran-packages-using-igraph.html) looked at CRAN package clusters from a page rank graph
 
 - We are over three years further on now, so updating may be informative
 
-- However, this is only CRAN, and there is the big BioConductor repository to consider too
+- However, this is only CRAN, and there is the big Bioconductor repository to consider too
 
-- Adding in the BioConductor (S4, curated) repo does alter the optics, as you'll see, over and above the cluster dominated by **Rcpp**
+- Adding in the Bioconductor (S4, curated) repo does alter the optics, as you'll see, over and above the cluster dominated by **Rcpp**
 
 
 
@@ -412,10 +421,10 @@ as.matrix %>%
 set_colnames("page.rank")
 ```
 
-## CRAN/BioConductor package page rank scores
+## CRAN/Bioconductor package page rank scores
 
-```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
-print(pr[1:30,], digits=4)
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
+print(pr[1:20,], digits=4)
 ```
 ```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE, results="hide"}
 cutoff <- quantile(pr[, "page.rank"], probs = 0.2)
@@ -437,27 +446,81 @@ pagerank[group, ] %>% sort(decreasing = TRUE) %>% head(n)
 z <- lapply(names(topClusters)[1:15], cluster, clusters=cl, pagerank=pr, n=20)
 ```
 
-## CRAN/BioConductor top two page rank clusters
+## First package cluster
+
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
+z[[1]][1:12]
+```
+
+## Second package cluster
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
+z[[2]][1:12]
+```
+
+## Third package cluster 
+
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
+z[[3]][1:12]
+```
+
+## Fourth package cluster
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
+z[[4]][1:12]
+```
+
+
+## Fifth package cluster
+
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
+tmp <- z[[5]][1:12]
+names(tmp) <- substring(names(tmp), 1, 15)
+tmp
+```
+
+## Sixth package cluster
+
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
+z[[6]][1:12]
+```
+
+
+
+
+## CRAN/Bioconductor top two page rank clusters
 
 ```{r, fig4, fig.show='hide', fig.height=5, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent"), warning=FALSE}
 library(RColorBrewer)
 library(wordcloud)
 opar <- par(mar=c(0,0,0,0)+0.1, mfrow=c(1,2))
-for (i in 1:2) wordcloud(names(z[[i]]), freq=unname(z[[i]]), scale=rev(5*range(unname(z[[i]]))/max(unname(z[[5]]))))
+for (i in 1:2) wordcloud(names(z[[i]]), freq=unname(z[[i]]), scale=rev(4*range(unname(z[[i]]))/max(unname(z[[5]]))))
 par(opar)
 ```
 \includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig4-1.pdf}
 
-## CRAN/BioConductor top six page rank clusters
+## CRAN/Bioconductor third and fourth page rank clusters
 
-```{r, fig5, fig.show='hide', fig.height=5, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent"), warning=FALSE}
-opar <- par(mar=c(0,0,0,0)+0.1, mfrow=c(2,3))
-for (i in 1:6) wordcloud(names(z[[i]]), freq=unname(z[[i]]), scale=rev(3*range(unname(z[[i]]))/max(unname(z[[5]]))))
+```{r, fig5a, fig.show='hide', fig.height=5, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent"), warning=FALSE}
+opar <- par(mar=c(0,0,0,0)+0.1, mfrow=c(1,2))
+for (i in 3:4) wordcloud(names(z[[i]]), freq=unname(z[[i]]), scale=rev(4*range(unname(z[[i]]))/max(unname(z[[5]]))))
 par(opar)
 ```
-\includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig5-1.pdf}
+\includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig5a-1.pdf}
 
-## CRAN/BioConductor package author clusters
+## CRAN/Bioconductor fifth and sixth page rank clusters
+
+```{r, fig5b, fig.show='hide', fig.height=5, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent"), warning=FALSE}
+opar <- par(mar=c(0,0,0,0)+0.1, mfrow=c(1,2))
+for (i in 5:6) wordcloud(names(z[[i]]), freq=unname(z[[i]]), scale=rev(4*range(unname(z[[i]]))/max(unname(z[[5]]))))
+par(opar)
+```
+\includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig5b-1.pdf}
+
+## CRAN/Bioconductor package author clusters
 
 - Francois Keck explored CRAN package co-authorship in a more recent blog: [\textcolor{mLightBrown}{Exploring the CRAN social network}](http://www.pieceofk.fr/?p=431) 
 
@@ -465,18 +528,18 @@ par(opar)
 
 - Thanks to Martin Morgan, I've added listings corresponding in part to `tools::CRAN_package_db()`
 
-- It is refreshing to see that BioConductor is clearly present, and the people implicated are active in upgrading R internals
+- It is refreshing to see that Bioconductor is clearly present, and the people implicated are active in upgrading R internals
 
 
 ```{r , echo = FALSE, eval=FALSE, mysize=TRUE, size='\\tiny', cache=TRUE}
 pdb0 <- tools::CRAN_package_db()
-url <- url("https://bioconductor.org/packages/release/bioc/VIEWS")
+url <- url("https://Bioconductor.org/packages/release/bioc/VIEWS")
 dcf <- as.data.frame(read.dcf(url), stringsAsFactors=FALSE)
 close(url)
-url_ann <- url("https://bioconductor.org/packages/release/data/annotation/VIEWS")
+url_ann <- url("https://Bioconductor.org/packages/release/data/annotation/VIEWS")
 dcf_ann <- as.data.frame(read.dcf(url_ann), stringsAsFactors=FALSE)
 close(url_ann)
-url_exp <- url("https://bioconductor.org/packages/release/data/experiment/VIEWS")
+url_exp <- url("https://Bioconductor.org/packages/release/data/experiment/VIEWS")
 dcf_exp <- as.data.frame(read.dcf(url_exp), stringsAsFactors=FALSE)
 close(url_exp)
 o1 <- intersect(names(dcf_exp), names(dcf_ann))
@@ -573,29 +636,91 @@ top_n(100, Package) %>% as.data.frame()}) -> comms
 ```
 
 
-## First 3 package author clusters
+## First two package author clusters
 
-![extract_ hell](../pix/Screenshot from 2018-05-11 14-11-22.png)
+---
+# ![extract_ hell](../pix/Screenshot from 2018-05-11 14-11-22.png)
+---
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\tiny', cache=TRUE}
+comms <- readRDS("comms.rds")
+```
+\begincols
+\begincol{0.48\textwidth}
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
+comms[[1]][1:12,]
+```
+\endcol
+
+\begincol{0.48\textwidth}
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
+comms[[2]][1:12,]
+```
+\endcol
+\endcols
+
+## Third and fourth
+
+\begincols
+\begincol{0.48\textwidth}
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
+tmp <- comms[[3]][1:12,]
+tmp[,1] <- substring(tmp[,1], 1, 20)
+tmp
+```
+\endcol
+\begincol{0.48\textwidth}
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
+comms[[4]][1:12,]
+```
+\endcol
+\endcols
+
+## Fifth and sixth
+
+\begincols
+\begincol{0.48\textwidth}
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
+comms[[5]][1:12,]
+```
+\endcol
+\begincol{0.48\textwidth}
+```{r , echo = FALSE, eval=TRUE, mysize=TRUE, size='\\small', cache=TRUE}
+tmp <- comms[[6]][1:12,]
+tmp[,1] <- substring(tmp[,1], 1, 20)
+tmp
+```
+\endcol
+\endcols
 
 
 
 ## First two package author clusters
 
-```{r, fig6, eval=FALSE, fig.show='hide', fig.height=5, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent")}
+```{r, fig6, eval=TRUE, fig.show='hide', fig.height=5, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent")}
 opar <- par(mar=c(0,0,0,0)+0.1, mfrow=c(1,2))
 for (i in 1:2) wordcloud(comms[[i]]$Name, freq=comms[[i]]$Package, scale=rev(3.75*range(comms[[i]]$Package)/max(comms[[2]]$Package)))
 par(opar)
 ```
 \includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig6-1.pdf}
 
-## First 6 package author clusters
+## Third and fourth package author clusters
 
-```{r, fig7, eval=FALSE, fig.show='hide', fig.height=5, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent")}
-opar <- par(mar=c(0,0,0,0)+0.1, mfrow=c(2,3))
-for (i in 1:6) wordcloud(comms[[i]]$Name, freq=comms[[i]]$Package, scale=rev(2.75*range(comms[[i]]$Package)/max(comms[[2]]$Package)))
+```{r, fig7a, eval=TRUE, fig.show='hide', fig.height=5, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent")}
+opar <- par(mar=c(0,0,0,0)+0.1, mfrow=c(1,2))
+for (i in 3:4) wordcloud(comms[[i]]$Name, freq=comms[[i]]$Package, scale=rev(3.75*range(comms[[i]]$Package)/max(comms[[2]]$Package)))
 par(opar)
 ```
-\includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig7-1.pdf}
+\includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig7a-1.pdf}
+
+## Fifth and sixth package author clusters
+
+```{r, fig7b, eval=TRUE, fig.show='hide', fig.height=5, fig.width=12, dev.args=list(family="Fira Sans", bg="transparent")}
+opar <- par(mar=c(0,0,0,0)+0.1, mfrow=c(1,2))
+for (i in 5:6) wordcloud(comms[[i]]$Name, freq=comms[[i]]$Package, scale=rev(3.75*range(comms[[i]]$Package)/max(comms[[2]]$Package)))
+par(opar)
+```
+\includegraphics[width=0.95\textwidth]{eRum_keynote_18_files/figure-beamer/fig7b-1.pdf}
+
 
 
 ## Roundup: history
